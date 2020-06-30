@@ -4,7 +4,8 @@ import React from 'react';
 import NavSearch from './../../NavSearch/NavSearch.components';
 
 //icons
-import { AiOutlineBank, AiOutlineLogin, AiOutlineLogout, AiOutlineSwitcher } from 'react-icons/ai';
+import { AiOutlineBank, AiOutlineLogin, AiOutlineSwitcher } from 'react-icons/ai';
+// AiOutlineLogout,
 
 const AdminNav = () => (
     <div className="admin-nav">
