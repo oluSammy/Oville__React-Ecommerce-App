@@ -1,9 +1,10 @@
 import React from 'react';
 
+import AdminNav from './../Admin-Nav/Admin-Nav.component';
 
 const AdminHome = () => (
     <div className="admin-container">
-        <h1>Admin Page</h1>
+        <AdminNav/>
     </div>
 );
 

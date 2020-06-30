@@ -1,0 +1,39 @@
+.admin-nav {
+    background-color: $color-deep-grey;
+    padding: 1rem 4rem;
+    color: $color-white;
+    display: flex;
+    align-items: center;
+
+    &__logo {
+        font-family: $font-italic;
+        font-size: 3rem;
+        margin-right: 15%;
+    }
+
+    &__links {
+        display: flex;
+        list-style-type: none;
+
+        &--icon {
+            margin-right: .6rem;
+        }
+
+        &--item {
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+
+            &:hover {
+                text-decoration: underline;
+            }
+            
+            &:not(:last-child) {
+                margin-right: 2.5rem;
+            }
+        }
+    }
+}

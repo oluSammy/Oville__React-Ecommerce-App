@@ -2,3 +2,8 @@
     display: grid;
     grid-template-columns: repeat(10, minmax(min-content, 1fr))
 }
+
+.admin-nav {
+    grid-row: 1 / 1;
+    grid-column: 1 / -1;
+}
