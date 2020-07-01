@@ -1,0 +1,81 @@
+.sidebar {
+    background: $color-blue-1;
+    color: $color-white;
+    padding-top: 4rem;
+    border-radius: 0 3rem 3rem 0;
+    margin-right: 3rem;
+    -webkit-box-shadow: 11px 1px 12px -4px rgba(0,0,0,0.45);
+    -moz-box-shadow: 11px 1px 12px -4px rgba(0,0,0,0.45);
+    box-shadow: 11px 1px 12px -4px rgba(0,0,0,0.45);
+
+    &__account {
+        width: max-content;
+        margin: 0 auto;
+        text-align: center;
+
+        &--avatar {
+            background-color: $color-white;
+            width: fit-content;
+            margin: 0 auto;
+            height: 10rem;
+            width: 10rem;
+            border-radius: 56%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: .5px solid $color-black;
+            
+            color: $text-color;            
+            font-size: 4rem;
+        }
+
+        &--email {
+            font-size: 1.7rem;
+            font-weight: 700;
+        }
+
+        &--admin {
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+    }
+
+    &__links {
+        margin-top: 4rem;
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        padding: .4rem 0;
+        padding-left: 3vw;
+        cursor: pointer;
+        transition: all .2s;
+
+        &--icon {
+            color: orange;
+            font-size: 2.5rem;
+            margin-right: 1.2rem;
+        }
+
+        &--item {
+            font-size: 2.2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        &:hover {
+            text-decoration: underline;
+            background-color: $color-white;
+            color: $text-color;
+        }
+    }
+}
+
+.sidebar-active {
+    text-decoration: underline;
+    background-color: $color-white;
+    color: $text-color;
+}

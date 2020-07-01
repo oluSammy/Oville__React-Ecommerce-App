@@ -13,3 +13,8 @@
     grid-row: 2 / -1;
     grid-column: 1 / -1;
 }
+
+.admin-dashboard {
+    display: grid;
+    grid-template-columns:20vw 80vw;
+}
