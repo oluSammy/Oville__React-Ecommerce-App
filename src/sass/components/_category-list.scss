@@ -1,0 +1,47 @@
+.category-list {
+    margin-top: 5rem;
+    margin-left: 2rem;
+
+    &__heading {
+        font-size: 3rem;
+        display: flex;
+        align-items: center;
+
+        &--icon {
+            margin-right: 2rem;
+            color: orangered;
+        }
+    }
+
+    & table {
+        width: 30%;
+        border-collapse: collapse;;
+    }
+
+    & th {
+        font-size: 2rem;
+        text-align: left;
+        color: orangered;
+    }
+
+    & td {
+        font-size: 1.7rem;
+        font-family: Arial, Helvetica, sans-serif;
+        margin-right: 1rem;
+        border-bottom: 1px solid grey;
+        margin: 2rem 0;
+        padding: 1rem 0;
+    }
+
+
+    & button {
+        background-color: $color-blue-1;
+        border: none;
+        padding: .4rem 2rem;
+        border-radius: 4px;
+        color: $color-white;
+        font-size: 1.4rem;
+        letter-spacing: 2px;
+        cursor: pointer;
+    }
+}

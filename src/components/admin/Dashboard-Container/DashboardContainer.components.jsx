@@ -1,9 +1,11 @@
 import React from 'react';
+import DashboardHome from '../DashboardHome/DashboardHome.component';
+
 
 const DashboardContainer = () => (
-    <h1 style={{backgroundColor: "white"}}>Hello Dashboard Container
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit amet, a inventore eius obcaecati sed.
-    </h1>
+    <div className="dashboard-container">
+        <DashboardHome/>
+    </div>
 );
 
 export default DashboardContainer;
