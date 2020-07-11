@@ -1,7 +1,6 @@
 import React from 'react';
 
 import AdminNav from './../Admin-Nav/Admin-Nav.component';
-import AdminSignUpPage from './../admin-signIn-page/AdminSignInPage.component';
 import AdminDashboard from './../Admin-Dashboard/AdminDashboard.component';
 
 //Redux
@@ -11,11 +10,8 @@ import { connect } from 'react-redux';
 //Redux Selectors
 import { selectUserSlice } from './../../../Redux/user/user.selectors';
 
-
 //firebase
 import { auth } from '../../../firebase/firebase.utils';
-
-
 
 class AdminHome extends React.Component {
 
@@ -32,18 +28,11 @@ class AdminHome extends React.Component {
     }
 
     render(){
-        const { currentUser } = this.props;
-
         return(
             <div className="admin-container">
                 <AdminNav/>
-                {
-                    currentUser ? 
-                    <AdminDashboard/>
-                    :    
-                    <AdminSignUpPage/> 
-                }
-            </div>
+                <AdminDashboard/>
+            </div>            
         )
     }
 };
@@ -54,7 +43,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
     currentUser: selectUserSlice(state)
-})
+});
 
 // const mapStateTO
 export default connect(mapStateToProps, mapDispatchToProps)(AdminHome);
