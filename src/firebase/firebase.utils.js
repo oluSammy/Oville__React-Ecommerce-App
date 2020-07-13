@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
+import 'firebase/storage';
 
 
 const firebaseConfig = {
@@ -20,3 +21,8 @@ firebase.initializeApp(firebaseConfig);
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 export const googleProvider = new firebase.auth.GoogleAuthProvider();
+
+//storage reference
+const storage = firebase.storage();
+const storageRef = storage.ref();
+const imageRef = storageRef.child('images');

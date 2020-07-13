@@ -1,79 +1,133 @@
 import React from 'react';
 import { RiMenuAddLine } from 'react-icons/ri';
-import { GoDiffAdded } from 'react-icons/go';
+import { connect } from 'react-redux';
+import { categories } from '../../../Redux/Category/category.selectors';
+import { asyncGetCategory } from '../../../Redux/Category/category.actions';
+
+
 
 class AddItem extends React.Component{
     state = {
-        productName: null,
-        description: null,
-        category: null,
-        price: null,
-        qty: null,
-        img: null
+        productName: '',
+        description: '',
+        category: '',
+        price: '',
+        qty: '',
+        img: null,
+        categoryList: null,
+        spec1: '',
+        spec2: '',
+        spec3: '',
+        spec4: '',
+    }
+
+    async componentDidMount(){
+      await this.props.getCategoryList();
+      this.setState({
+          ...this.state,
+          categoryList: this.props.categories
+      })
+    }
+
+    handleChange = event => {
+        const { value, name } = event.target;
+        this.setState({[name]: value})
+    }
+
+    handleSubmit = event => {
+        event.preventDefault();
+        console.log(this.state)
+    }
+
+    handleFileChange = event => {
+        console.log(event.target.files[0].name);
+        this.setState({...this.state, img: event.target.files[0]})
     }
 
     render(){
+        const { productName, description, category, price, qty, spec1, spec2, spec3, spec4 } = this.state;
         return (
         <div className="add-item">
             <h2 className="add-item__heading">
                 <RiMenuAddLine/>
                 <span>Add New Item(s)</span>    
             </h2>
-            <form className="add-item__form">
+            <form className="add-item__form" onSubmit={this.handleSubmit}>
                 <div className="add-item__form--group">
                     <label htmlFor="name" className="add-item__label">Product Name:</label>
-                    <input type="text" name="name" id="name" required className="add-item__input add-item__input--name"/>
+                    <input value={productName} onChange={this.handleChange}
+                        type="text" name="productName" id="name" required className="add-item__input add-item__input--name"
+                    />
                 </div>
                 <div className="add-item__form--group add-item__description">
                     <label htmlFor="description" className="add-item__label">Description:</label>
-                    <textarea name="description" id="description" cols="36" rows="3" required className="add-item__input add-item__input--textarea"></textarea>
+                    <textarea value={description} onChange={this.handleChange}
+                        name="description" id="description" cols="36" rows="3" required 
+                        className="add-item__input add-item__input--textarea">
+                    </textarea>
                 </div>
                 <div className="add-item__form--group add-item__category">
                     <label htmlFor="category" className="add-item__label">Category:</label>
-                    <select id="category" className="add-item__input add-item__input--category">
-                        <option value="Computer">Computer</option>
-                        <option value="Laptop">Laptop</option>
-                        <option selected value="Phone">Phone</option>
+                    <select value={category} onChange={this.handleChange}
+                        id="category" name="category" className="add-item__input add-item__input--category">
+                        {
+                            this.state.categoryList ? 
+                                this.state.categoryList.map(category => 
+                                    <option key={category.categoryName} value={category.categoryName}>{category.categoryName}</option>                                    
+                                )
+                            : 
+                            <option value="Computer">Loading...</option> 
+                        }
                     </select>
                 </div>
                 <div className="add-item__form--number">
                     <div className="add-item__form--group">
                         <label htmlFor="Price" className="add-item__label">Price(&#8358;):</label>
-                        <input type="number" name="price" id="price" required className="add-item__input add-item__input--price"/>
+                        <input value={price} onChange={this.handleChange}
+                            type="number" name="price" id="price" required className="add-item__input add-item__input--price"
+                        />
                     </div>
                     <div className="add-item__form--group">
-                        <label htmlFor="Price" className="add-item__label">Quantity:</label>
-                        <input type="number" name="quantity" id="quantity" required className="add-item__input add-item__input--qty"/>
+                        <label htmlFor="qty" className="add-item__label">Quantity:</label>
+                        <input value={qty} onChange={this.handleChange}
+                            type="number" name="qty" id="qty" required className="add-item__input add-item__input--qty"
+                        />
                     </div>
                 </div>
     
                 <div className="add-item__form--group">
                     <label htmlFor="image" className="add-item__label">Select Image:</label>
-                    <input type="file" className="add-item__input--file" style={{color: "red"}}/>
+                    <input onChange={this.handleFileChange} 
+                        type="file" className="add-item__input--file" style={{color: "red"}} required
+                        accept="image/png, image/jpeg image/webp"
+                    />
                 </div>
                 <div className="add-item__spec">
                     <h5 className="add-item__spec--heading">Add Specification</h5>
                     <div className="add-item__spec--group">
                         <label htmlFor="spec1" className="add-item__label">1: </label>
-                        <input type="text" name="spec1" id="spec1" className="add-item__input"/>
+                        <input value={spec1} onChange={this.handleChange}
+                            type="text" name="spec1" id="spec1" className="add-item__input"
+                        />
                     </div>
                     <div className="add-item__spec--group">
                         <label htmlFor="spec2" className="add-item__label">2: </label>
-                        <input type="text" name="spec2" id="spec2" className="add-item__input"/>
+                        <input value={spec2} onChange={this.handleChange}
+                            type="text" name="spec2" id="spec2" className="add-item__input"
+                        />
                     </div>
                     <div className="add-item__spec--group">
                         <label htmlFor="spec3" className="add-item__label">3: </label>
-                        <input type="text" name="spec3" id="spec3" className="add-item__input"/>
+                        <input value={spec3} onChange={this.handleChange}
+                            type="text" name="spec3" id="spec3" className="add-item__input"
+                        />
                     </div>
                     <div className="add-item__spec--group">
                         <label htmlFor="spec4" className="add-item__label">4: </label>
-                        <input type="text" name="spec4" id="spec4" className="add-item__input"/>
+                        <input  value={spec4} onChange={this.handleChange}
+                            type="text" name="spec4" id="spec4" className="add-item__input"
+                        />
                     </div>
-
-
-                    <button className="add-item__spec--more" onClick={this.addSpec}>
-                        <GoDiffAdded/> <span>Add More specs</span>
-                    </button>
                 </div>
     
                 <input type="submit" value="Upload" className="add-item__upload"/>
@@ -83,4 +137,12 @@ class AddItem extends React.Component{
     }
 };
 
-export default AddItem;
+const mapStateToProps = state => ({
+    categories: categories(state)
+});
+
+const mapDispatchToProps = dispatch => ({
+    getCategoryList: () => dispatch(asyncGetCategory())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddItem);

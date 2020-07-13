@@ -2,7 +2,10 @@ import { categoryActionTypes } from './category.types';
 
 const INIT_STATE= {
     isCreating: false,
-    errorMsg: null
+    errorMsg: null,
+    isGettingCategory: false,
+    getCategoryErrorMsg: '',
+    categories: null
 }
 
 const categoryReducer = (state = INIT_STATE, action) => {
@@ -22,6 +25,23 @@ const categoryReducer = (state = INIT_STATE, action) => {
                 ...state,
                 isCreating: false,
                 errorMsg: action.payload
+            }
+        case categoryActionTypes.GET_CATEGORY_START:
+            return {
+                ...state,
+                isGettingCategory: true
+            }
+        case categoryActionTypes.GET_CATEGORY_SUCCESS:
+            return {
+                ...state,
+                categories: action.payload,
+                isGettingCategory: false
+            }
+        case categoryActionTypes.GET_CATEGORY_FAILURE:
+            return {
+                ...state, 
+                isGettingCategory: false,
+                getCategoryErrorMsg: action.payload
             }
         default: 
             return state;

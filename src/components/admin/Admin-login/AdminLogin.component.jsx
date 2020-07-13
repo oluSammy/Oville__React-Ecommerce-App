@@ -19,6 +19,8 @@ import Loader from 'react-loader-spinner';
 
 class AdminLogin extends React.Component{
 
+    _isMounted = false;
+
     state = {
         email: '',
         password: '',
@@ -43,7 +45,6 @@ class AdminLogin extends React.Component{
                 passwordError: ''
             })
             await auth.signInWithEmailAndPassword(this.state.email, this.state.password);
-            console.log('you are now logged in');
             this.setState({
                 ...this.state, 
                 loading: false,
@@ -63,6 +64,10 @@ class AdminLogin extends React.Component{
 
     handleGoogleAuth = () => {
         auth.signInWithPopup(googleProvider);
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     render(){

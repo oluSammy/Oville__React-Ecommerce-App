@@ -44,17 +44,17 @@ class CreateCategory extends React.Component {
                         {
                             this.props.isCreating ? 
                                 <Loader
-                                        style={{marginTop: '.5rem'}}
-                                        type="Puff"
-                                        color="#FF0000"
-                                        height={20}
-                                        width={20}
-                                        timeout={0}
+                                    style={{marginTop: '.5rem'}}
+                                    type="Puff"
+                                    color="#FF0000"
+                                    height={20}
+                                    width={20}
+                                    timeout={0}
                                 /> :
                                 ''
                         }
                     </div>
-</form>
+                </form>
             </div>
         );
     }

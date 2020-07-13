@@ -10,4 +10,18 @@ export const creatingCategorySlice = createSelector(
 export const selectCategoryErrMsgSlice = createSelector(
     [selectCategories],
     category => category.errMsg
+);
+
+export const getCategoryErrorMsg = createSelector(
+    [selectCategories],
+    category => category.getCategoryErrorMsg
+);
+
+export const categories = createSelector(
+    [selectCategories],
+    category => category.categories
+);
+export const isGettingCategorySlice  = createSelector(
+    [selectCategories],
+    category => category.isGettingCategory
 )
