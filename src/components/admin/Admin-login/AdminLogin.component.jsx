@@ -16,10 +16,6 @@ import { IoIosLogIn } from 'react-icons/io';
 import { FcGoogle } from 'react-icons/fc';
 import Loader from 'react-loader-spinner';
 
-//css
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-
-
 
 class AdminLogin extends React.Component{
 

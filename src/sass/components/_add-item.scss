@@ -85,6 +85,12 @@
             display: flex;
             align-items: center;
             margin-left: 15rem;
+            background-color: $color-blue-3;
+            color: $color-white;
+            padding: .4rem .9rem;
+            border: none;
+            cursor: pointer;
+            border-radius: .4rem;   
 
             & span {
                 margin-left: .5rem;
@@ -100,8 +106,7 @@
         border: none;
         cursor: pointer;
     }
-
-    & input[type=number] {
-        -moz-appearance: textfield;
-      }
+}
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
 }
