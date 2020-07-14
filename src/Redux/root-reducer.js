@@ -4,18 +4,21 @@ import storage from 'redux-persist/lib/storage';
 
 import userReducer from './user/user.reducer';
 import categoryReducer from './Category/category.reducer';
+import addNewItemReducer from './newItem/new-item.reducer';
+
 
 
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['category']
+    whitelist: ['category', 'newItem'] 
 }
 
 const rootReducer = combineReducers({
     user: userReducer,
-    category: categoryReducer
+    category: categoryReducer,
+    newItem: addNewItemReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);

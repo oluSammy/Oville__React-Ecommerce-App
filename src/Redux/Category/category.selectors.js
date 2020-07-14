@@ -24,4 +24,4 @@ export const categories = createSelector(
 export const isGettingCategorySlice  = createSelector(
     [selectCategories],
     category => category.isGettingCategory
-)
+);

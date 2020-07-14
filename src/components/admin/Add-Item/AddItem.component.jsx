@@ -3,6 +3,9 @@ import { RiMenuAddLine } from 'react-icons/ri';
 import { connect } from 'react-redux';
 import { categories } from '../../../Redux/Category/category.selectors';
 import { asyncGetCategory } from '../../../Redux/Category/category.actions';
+import { isAddingNewProduct } from '../../../Redux/newItem/new-item.selectors';
+import { asyncUpLoadNewProducts } from '../../../Redux/newItem/new-item.actions';
+import Loader from 'react-loader-spinner';
 
 
 
@@ -18,7 +21,7 @@ class AddItem extends React.Component{
         spec1: '',
         spec2: '',
         spec3: '',
-        spec4: '',
+        spec4: ''
     }
 
     async componentDidMount(){
@@ -34,13 +37,25 @@ class AddItem extends React.Component{
         this.setState({[name]: value})
     }
 
-    handleSubmit = event => {
+    handleSubmit = async event => {
         event.preventDefault();
         console.log(this.state)
+        this.props.uploadNewProducts(this.state);
+        this.setState({
+            ...this.state,
+            productName: '',
+            description: '',
+            category: '',
+            price: '',
+            qty: '',
+            spec1: '',
+            spec2: '',
+            spec3: '',
+            spec4: ''
+        });
     }
 
     handleFileChange = event => {
-        console.log(event.target.files[0].name);
         this.setState({...this.state, img: event.target.files[0]})
     }
 
@@ -70,6 +85,7 @@ class AddItem extends React.Component{
                     <label htmlFor="category" className="add-item__label">Category:</label>
                     <select value={category} onChange={this.handleChange}
                         id="category" name="category" className="add-item__input add-item__input--category">
+                        <option >Select Category</option>
                         {
                             this.state.categoryList ? 
                                 this.state.categoryList.map(category => 
@@ -99,7 +115,7 @@ class AddItem extends React.Component{
                     <label htmlFor="image" className="add-item__label">Select Image:</label>
                     <input onChange={this.handleFileChange} 
                         type="file" className="add-item__input--file" style={{color: "red"}} required
-                        accept="image/png, image/jpeg image/webp"
+                        accept="image/png, image/jpeg, image/jpg, image/webp"
                     />
                 </div>
                 <div className="add-item__spec">
@@ -129,8 +145,23 @@ class AddItem extends React.Component{
                         />
                     </div>
                 </div>
-    
-                <input type="submit" value="Upload" className="add-item__upload"/>
+
+                {
+                    this.props.isAddingNewProduct ? 
+                        <div style={{marginTop: "2rem", display: "flex", alignItems: 'center'}}>
+                            <input style={{marginRight: '2rem'}} value="Uploading" className="add-item__upload"/>
+                            <Loader
+                                    type="Oval"
+                                    color="#006400"
+                                    height={50}
+                                    width={50}
+                                    timeout={0}                
+                                />
+                        </div> :
+                        <div style={{marginTop: "2rem", display: "flex", alignItems: 'center'}}>
+                            <input style={{marginRight: '2rem'}} type="submit" value="Upload" className="add-item__upload"/>
+                        </div>
+                }
             </form>
         </div>
         );
@@ -138,11 +169,13 @@ class AddItem extends React.Component{
 };
 
 const mapStateToProps = state => ({
-    categories: categories(state)
+    categories: categories(state),
+    isAddingNewProduct: isAddingNewProduct(state)
 });
 
 const mapDispatchToProps = dispatch => ({
-    getCategoryList: () => dispatch(asyncGetCategory())
+    getCategoryList: () => dispatch(asyncGetCategory()),
+    uploadNewProducts: (products) => dispatch(asyncUpLoadNewProducts(products))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddItem);

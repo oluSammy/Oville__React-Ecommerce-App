@@ -16,6 +16,10 @@ import { IoIosLogIn } from 'react-icons/io';
 import { FcGoogle } from 'react-icons/fc';
 import Loader from 'react-loader-spinner';
 
+//modal
+import swal from 'sweetalert';
+
+
 
 class AdminLogin extends React.Component{
 
@@ -58,7 +62,14 @@ class AdminLogin extends React.Component{
             } 
             else if (error.code === 'auth/wrong-password'){
                 this.setState({...this.state, passwordError: 'Incorrect Password'});  
-            } 
+            } else if (error.code === 'auth/network-request-failed'){
+                swal({
+                    title: "Network Error!",
+                    text: "Check your network connection and try again",
+                    icon: "warning",
+                    button: "ok",
+                });
+            }
         }
     }
 
