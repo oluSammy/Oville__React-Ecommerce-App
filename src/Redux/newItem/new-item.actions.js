@@ -48,7 +48,7 @@ export const asyncUpLoadNewProducts = (newProduct) => {
 
             dispatch(addNewItemSuccess());
 
-            //sweet alert modal
+            //sweet alert success modal
             swal({
                 title: "Done",
                 text: "Uploaded new Products!",
@@ -57,6 +57,8 @@ export const asyncUpLoadNewProducts = (newProduct) => {
             });
         } catch (error) {
             dispatch(addNewItemFailure(error));
+
+            //sweet alert error modal
             swal({
                 title: "oops! An Error occurred",
                 text: "Try Again",

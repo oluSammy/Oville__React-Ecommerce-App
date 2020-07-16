@@ -32,10 +32,15 @@ export const asyncCreateCategory = (category) => {
     return async dispatch => {
         try {
             dispatch(createCategoryStart());
+
+            //create new category on firebase
             await firestore.collection('categories').add({
                 categoryName: category,
             });
+
+            //initialize the stock count of the new category to 0
             await firestore.collection('stock_count').doc(category).set({count: 0, category});
+
             dispatch(categorySuccess());
             swal({
                 title: "Done",
@@ -52,6 +57,7 @@ export const asyncCreateCategory = (category) => {
 export const asyncGetCategory = () => {
     return async dispatch => {
         try {
+            //get category list and dispatch
             let categoryNames = []
             dispatch(getCategoryStart());
             const categoryRef = firestore.collection('categories');

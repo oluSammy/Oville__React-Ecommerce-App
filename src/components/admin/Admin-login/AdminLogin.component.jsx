@@ -5,10 +5,6 @@ import React from 'react';
 import { auth } from '../../../firebase/firebase.utils';
 import { googleProvider } from './../../../firebase/firebase.utils';
 
-//redux
-import { connect } from 'react-redux';
-
-
 //icons
 import { AiOutlineMail } from 'react-icons/ai';
 import { RiLockPasswordLine } from 'react-icons/ri';
@@ -144,8 +140,4 @@ class AdminLogin extends React.Component{
     }
 };
 
-const mapStateToProps = dispatch => ({
-
-})
-
-export default connect(mapStateToProps)(AdminLogin);
+export default AdminLogin;

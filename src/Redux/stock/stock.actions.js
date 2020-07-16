@@ -18,6 +18,8 @@ const getStockFailure = (error) => ({
 export const asyncGetStockCount = () => {
     return async dispatch => {
         try {
+            
+            //get stock count from firebase
             dispatch(getStockStart());
             const stock = [];
             const stockRef = firestore.collection('stock_count');

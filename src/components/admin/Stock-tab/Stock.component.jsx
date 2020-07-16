@@ -6,17 +6,18 @@ import { Link } from 'react-router-dom';
 
 
 class Stock extends React.Component {
-
+    
+    //get stock count
     async componentDidMount(){
          await this.props.getStockCount();
-        //  console.log(stockCount(this.props.categories));
     }
-    render(){
 
+    render(){
         return (
             <div className="stock">
                 <div className="stock__count">
                     <span className="stock__count--number">
+                        {/* //calculate sum of all stock */}
                         {
                             this.props.stock ? 
                             this.props.stock.reduce((acc, value) => {

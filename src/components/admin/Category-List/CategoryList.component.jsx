@@ -19,6 +19,7 @@ class CategoryList extends React.Component {
                         <th>Item Count</th>
                     </tr>
                     {
+                    // get stock count for all stock items
                     this.props.stockCount ?
                             this.props.stockCount.map(stock => <StockRow stock={stock} key={stock.category} />)
                         : 

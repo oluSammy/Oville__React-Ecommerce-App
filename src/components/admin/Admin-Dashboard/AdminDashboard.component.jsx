@@ -24,9 +24,11 @@ import { selectUserSlice } from './../../../Redux/user/user.selectors';
 
 
 
-const AdminDashboard = ({currentUser}) => {
-    
+const AdminDashboard = ({currentUser}) => {    
     return(
+        
+        //render page if user is logged in else render the sign in page
+        
         currentUser ? 
         <Router>    
             <div className="admin-dashboard">

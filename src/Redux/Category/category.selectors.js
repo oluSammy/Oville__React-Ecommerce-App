@@ -21,12 +21,8 @@ export const categories = createSelector(
     [selectCategories],
     category => category.categories
 );
+
 export const isGettingCategorySlice  = createSelector(
     [selectCategories],
     category => category.isGettingCategory
 );
-
-// export const overallStockCount = createSelector(
-//     [selectCategories],
-//     category => 
-// )

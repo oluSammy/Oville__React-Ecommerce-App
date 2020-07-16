@@ -25,6 +25,7 @@ class AddItem extends React.Component{
     }
 
     async componentDidMount(){
+        //get category list from firestore 
       await this.props.getCategoryList();
       this.setState({
           ...this.state,
@@ -38,6 +39,7 @@ class AddItem extends React.Component{
     }
 
     handleSubmit = async event => {
+        // dispatch upload new products from redux and reset form to init state
         event.preventDefault();
         console.log(this.state)
         this.props.uploadNewProducts(this.state);

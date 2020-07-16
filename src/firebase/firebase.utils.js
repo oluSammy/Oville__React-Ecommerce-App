@@ -25,5 +25,8 @@ export const googleProvider = new firebase.auth.GoogleAuthProvider();
 //storage reference
 const storage = firebase.storage();
 const storageRef = storage.ref();
+
+//image ref
 export const imageRef = storageRef.child('images');
+
 export default firebase;

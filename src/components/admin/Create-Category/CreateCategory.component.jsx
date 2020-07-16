@@ -21,6 +21,8 @@ class CreateCategory extends React.Component {
 
     handleSubmit = event => {
         event.preventDefault();
+
+        //dispatch create category from redux and reset form
         this.props.createCategory(this.state.category);
         this.setState({category: ''})
     }
