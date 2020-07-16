@@ -25,3 +25,8 @@ export const isGettingCategorySlice  = createSelector(
     [selectCategories],
     category => category.isGettingCategory
 );
+
+// export const overallStockCount = createSelector(
+//     [selectCategories],
+//     category => 
+// )

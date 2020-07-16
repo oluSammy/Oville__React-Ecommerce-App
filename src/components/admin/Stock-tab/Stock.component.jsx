@@ -1,16 +1,47 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { selectStockSlice } from '../../../Redux/stock/stock.selector';
+import { asyncGetStockCount } from '../../../Redux/stock/stock.actions';
+import { Link } from 'react-router-dom';
 
-const Stock = () => (
-    <div className="stock">
-        <div className="stock__count">
-            <span className="stock__count--number"> 1198</span>
-            <span className="stock__count--text">Items Available</span>
-        </div>
-        <div className="stock__xx">
-            <h2 className="stock__heading"> Stock</h2>
-            <button className="stock__action">Add New Item</button>
-        </div>
-    </div>
-);
 
-export default Stock;
+class Stock extends React.Component {
+
+    async componentDidMount(){
+         await this.props.getStockCount();
+        //  console.log(stockCount(this.props.categories));
+    }
+    render(){
+
+        return (
+            <div className="stock">
+                <div className="stock__count">
+                    <span className="stock__count--number">
+                        {
+                            this.props.stock ? 
+                            this.props.stock.reduce((acc, value) => {
+                                    return acc + value.count
+                                }, 0)
+                            : '...'
+                        }
+                    </span>
+                    <span className="stock__count--text">Items Available</span>
+                </div>
+                <div className="stock__xx">
+                    <h2 className="stock__heading"> Stock</h2>
+                    <Link to="/add" className="stock__action">Add New Item</Link>
+                </div>
+            </div>
+        )
+    }
+};
+
+const mapDispatchToProps = dispatch => ({
+    getStockCount: () => dispatch(asyncGetStockCount())
+});
+
+const mapStateToProps = state => ({
+    stock: selectStockSlice(state)
+})
+
+export default connect(mapStateToProps,mapDispatchToProps)(Stock);

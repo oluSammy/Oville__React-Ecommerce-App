@@ -1,35 +1,38 @@
 import React from 'react';
-
+import { selectStockSlice } from '../../../Redux/stock/stock.selector';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
+import { connect } from 'react-redux';
+import StockRow from '../../Stock-count/StockCount.components';
 
-const CategoryList = () => (
-    <div className="category-list">
-        <h4 className="category-list__heading"> 
-            <AiOutlineUnorderedList className="category-list__heading--icon"/> 
-            <span>Categories</span> 
-        </h4>
-        <table className="category-list__table">
-            <tr>
-                <th>Category</th>
-                <th>Item Count</th>
-            </tr>
-            <tr className="table-row">
-                <td>Laptop</td>
-                <td>934</td>
-                <td><button>View</button></td>
-            </tr>
-            <tr className="table-row">
-                <td>Phones</td>
-                <td>934</td>
-                <td><button>View</button></td>
-            </tr>
-            <tr className="table-row">
-                <td>Accessories</td>
-                <td>934</td>
-                <td><button>View</button></td>
-            </tr>
-        </table>
-    </div>
-);
 
-export default CategoryList;
+class CategoryList extends React.Component {
+    render(){
+        return(
+            <div className="category-list">
+                <h4 className="category-list__heading"> 
+                    <AiOutlineUnorderedList className="category-list__heading--icon"/> 
+                    <span>Categories</span> 
+                </h4>
+                <table className="category-list__table">
+                    <tr>
+                        <th>Category</th>
+                        <th>Item Count</th>
+                    </tr>
+                    {
+                    this.props.stockCount ?
+                            this.props.stockCount.map(stock => <StockRow stock={stock} key={stock.category} />)
+                        : 
+                            'loading'
+                    } 
+                    
+                </table>
+            </div>
+        )
+    }
+}
+
+const mapStateToProps = state => ({
+    stockCount: selectStockSlice(state)
+})
+
+export default connect(mapStateToProps, null)(CategoryList);

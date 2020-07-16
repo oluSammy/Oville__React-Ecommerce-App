@@ -1,5 +1,6 @@
 import { categoryActionTypes } from './category.types';
 import { firestore } from '../../firebase/firebase.utils';
+import swal from 'sweetalert';
 
 const createCategoryStart = () => ({
     type: categoryActionTypes.ADD_CATEGORY_START
@@ -32,13 +33,18 @@ export const asyncCreateCategory = (category) => {
         try {
             dispatch(createCategoryStart());
             await firestore.collection('categories').add({
-                categoryName: category
+                categoryName: category,
             });
+            await firestore.collection('stock_count').doc(category).set({count: 0, category});
             dispatch(categorySuccess());
-            alert(`Done! Created new category "${category}"`)
+            swal({
+                title: "Done",
+                text: "Created new category",
+                icon: "success",
+                button: "ok!",
+            });
         } catch (error) {
             dispatch(createCategoryFailure(error));
-            console.log(error);
         }
     };
 }
