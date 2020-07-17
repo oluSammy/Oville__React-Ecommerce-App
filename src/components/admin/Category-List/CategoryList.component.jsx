@@ -7,6 +7,7 @@ import StockRow from '../../Stock-count/StockCount.components';
 
 class CategoryList extends React.Component {
     render(){
+        const { stockCount } = this.props;
         return(
             <div className="category-list">
                 <h4 className="category-list__heading"> 
@@ -20,8 +21,8 @@ class CategoryList extends React.Component {
                     </tr>
                     {
                     // get stock count for all stock items
-                    this.props.stockCount ?
-                            this.props.stockCount.map(stock => <StockRow stock={stock} key={stock.category} />)
+                    stockCount ?
+                            stockCount.map(stock => <StockRow stock={stock} key={stock.category}/>)
                         : 
                             'loading'
                     } 

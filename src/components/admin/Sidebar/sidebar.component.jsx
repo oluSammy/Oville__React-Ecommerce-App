@@ -32,7 +32,7 @@ class Sidebar extends React.Component{
                         <IoIosCreate className="sidebar__link--icon"/>
                         <div className="sidebar__link--item">Create Admin</div>
                     </NavLink>
-                    <NavLink to="items" className="sidebar__link">
+                    <NavLink to="" className="sidebar__link">
                         <AiOutlineSwitcher className="sidebar__link--icon"/>
                         <div className="sidebar__link--item">App</div>
                     </NavLink>
