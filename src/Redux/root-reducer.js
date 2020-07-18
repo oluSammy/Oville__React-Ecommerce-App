@@ -6,6 +6,7 @@ import userReducer from './user/user.reducer';
 import categoryReducer from './Category/category.reducer';
 import addNewItemReducer from './newItem/new-item.reducer';
 import { stockReducer } from './stock/stock.reducer';
+import productsReducer from './products-page/products.reducer';
 
 
 
@@ -14,14 +15,15 @@ import { stockReducer } from './stock/stock.reducer';
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['category', 'newItem', 'stock'] 
+    whitelist: ['category', 'newItem', 'stock', 'products'] 
 }
 
 const rootReducer = combineReducers({
     user: userReducer,
     category: categoryReducer,
     newItem: addNewItemReducer,
-    stock: stockReducer
+    stock: stockReducer,
+    products: productsReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);

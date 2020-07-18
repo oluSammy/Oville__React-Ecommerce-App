@@ -1,41 +1,56 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
-const Item = () => (
+const Item = ({data: { description, imgUrl, price, productName, quantity, unitsSold }, id, history}) => (
     <div className="item">
         <div className="item__content">
             <figure className="item__img">
-                <img src={require('../../../assets/img/sample_computer.jpg')} alt=""/>
+                <img src={`${imgUrl}`} alt=""/>
             </figure>
             <div className="item__details">
                 <div className="item__spec">
                     <div className="item__detail "> 
                         <p className="item__detail--name">Name:</p>  
-                        <span>Hp EliteBook</span>
+                        <span>{productName}</span>
                     </div>
                 
                     <div className="item__detail"> 
                         <p className="item__detail--description">Description:</p>  
-                        <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id, aliquid?</span>
+                        <span>{limitSentence(description)}</span>
                     </div>
                     <div className="item__detail"> 
-                        <p className="item__detail--unit">Units Sold:</p>  
-                        <span>651</span>
+                        <p className="item__detail--unit">
+                            Units Sold
+                        </p>  
+                        <span>{ unitsSold ? unitsSold : 0 }</span>
                     </div>
                 </div>
                 <div className="">
                     <div className="item__detail"> 
                         <p className="item__detail--price">Price:</p>  
-                        <span>&#8358; 9000.00</span>
+                        <span>&#8358; {price}</span>
                     </div>
                     <div className="item__detail"> 
                         <p className="item__detail--qty">Qty:</p>  
-                        <span>90</span>
+                        <span>{ quantity }</span>
                     </div>
-                    <button className="item__btn">Edit</button>
+                    <button onClick={ () => history.push(`/edit/${id}`)}
+                        className="item__btn">
+                        Edit
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 );
 
-export default Item;
+
+const limitSentence = (sentence) => {
+    const words = sentence.split(" ");
+
+    if(words.length > 20 )
+        return `${words.join(" ")}...`;
+    return sentence;
+}
+
+export default withRouter(Item);

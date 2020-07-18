@@ -40,7 +40,7 @@ const AdminDashboard = ({currentUser}) => {
                             <CategoryList/>
                         </div>}}/>       
                         <Route exact path="/add" component = {AddItem}/>       
-                        <Route exact path="/edit" component = {EditItem}/>       
+                        <Route exact path="/edit/:id" component = {EditItem}/>       
                         <Route exact path="/Create-admin" component = {CreateAdmin}/>       
                         <Route exact path="/create-category" component = {CreateCategory}/>       
                         <Route exact path="/product/:id" component ={ItemPage} />
