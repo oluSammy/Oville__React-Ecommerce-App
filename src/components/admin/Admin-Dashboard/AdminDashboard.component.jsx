@@ -10,7 +10,6 @@ import CreateCategory from './../Create-Category/CreateCategory.component';
 import AddItem from '../Add-Item/AddItem.component';
 import ItemPage from '../Item-Page/ItemPage.component';
 import AdminSignUpPage from '../admin-signIn-page/AdminSignInPage.component';
-import SearchPage from './../Search-Page/SearchPage.component';
 
 
 
@@ -22,6 +21,7 @@ import { connect } from 'react-redux';
 
 //Redux Selectors
 import { selectUserSlice } from './../../../Redux/user/user.selectors';
+import AdminNav from './../Admin-Nav/Admin-Nav.component';
 
 
 
@@ -33,6 +33,7 @@ const AdminDashboard = ({currentUser}) => {
         
         currentUser ? 
         <Router>    
+            <AdminNav/>
             <div className="admin-dashboard">
                 <Sidebar/>
                 <div className="dashboard-container">
@@ -46,7 +47,6 @@ const AdminDashboard = ({currentUser}) => {
                         <Route exact path="/create-category" component = {CreateCategory}/>       
                         <Route exact path="/edit/:id" component = {EditItem}/>       
                         <Route exact path="/product/:id" component ={ItemPage} />
-                        <Route exact path="/search/:id" component ={SearchPage} />
                     </Switch>
                 </div>
             </div>

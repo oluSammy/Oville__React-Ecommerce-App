@@ -22,7 +22,7 @@ class AdminHome extends React.Component {
     render(){
         return(
             <div className="admin-container">
-                <AdminNav/>
+                {/* <AdminNav/> */}
                 <AdminDashboard/>
             </div>            
         )

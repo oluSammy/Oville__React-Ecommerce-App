@@ -3,6 +3,7 @@
     url(../../assets/img/admin-bg.jpg);
     background-size: cover;
     background-position: center;
+    height: 100vh;
 }
 
 .dashboard-container {
@@ -11,4 +12,8 @@
     border-radius: 2rem;
     box-shadow: -1px 3px 16px -4px rgba(0,0,0,0.75);    
     padding: 4rem;
+
+    @media only screen and (max-width: $bp-largest) {
+        margin: 2rem 1rem;
+    }
 }

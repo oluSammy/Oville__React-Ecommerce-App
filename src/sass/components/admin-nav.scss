@@ -5,10 +5,22 @@
     display: flex;
     align-items: center;
 
+    @media only screen and (max-width: $bp-tablet-2) {
+        padding: 1rem 1.6rem;
+    }
+
     &__logo {
         font-family: $font-italic;
         font-size: 3rem;
         margin-right: 15%;
+
+        @media only screen and (max-width: $bp-tablet-2) {
+            font-size: 2.5rem;
+        }
+
+        @media only screen and (max-width: $bp-phone) {
+            font-size: 2rem;
+        }
     }
 
     &__links {
@@ -17,6 +29,10 @@
 
         &--icon {
             margin-right: .6rem;
+
+            @media only screen and (max-width: $bp-tablet-2) {
+                margin-right: .3rem;
+            }
         }
 
         &--item {
@@ -27,13 +43,63 @@
             display: flex;
             align-items: center;
 
+            @media only screen and (max-width: $bp-tablet-2) {
+                font-size: 1.5rem;
+            }
+
+            @media only screen and (max-width: $bp-phone) {
+                font-size: 1.4rem;
+            }
+
+            @media only screen and (max-width: $bp-small-phone) {
+                font-size: 1.2rem;
+            }
+
             &:hover {
                 text-decoration: underline;
             }
             
             &:not(:last-child) {
                 margin-right: 2.5rem;
+
+                @media only screen and (max-width: $bp-tablet-2) {
+                    margin-right: 1.8rem;
+                }
+                @media only screen and (max-width: $bp-phone) {
+                    margin-right: 1.2rem;
+                }
+                @media only screen and (max-width: $bp-small-phone) {
+                    margin-right: 1rem;
+                }
             }
+        }
+    }
+
+    &__btn {
+        margin-top: .6rem;
+        cursor: pointer;
+    }
+
+    &__hamburger {
+        width: 2.5rem;
+        height: 2px;
+        background-color: $color-white;
+        display: none;
+
+        @media only screen and (max-width: $bp-tablet-2) {
+            display: block;
+        }
+
+        &:not(:last-child) {
+            margin-bottom: .5rem;
+
+            @media only screen and (max-width: $bp-small-phone) {
+                margin-bottom: .3rem;
+            }
+        }
+
+        @media only screen and (max-width: $bp-small-phone) {
+            width: 2rem;
         }
     }
 }

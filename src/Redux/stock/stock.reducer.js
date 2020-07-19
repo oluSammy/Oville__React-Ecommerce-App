@@ -3,7 +3,8 @@ import { stockActionTypes } from './stock.types';
 const INIT_STATE = {
     stock: null,
     isGettingStock: false,
-    getStockErrorMsg: ''
+    getStockErrorMsg: '',
+    burgerIsHidden: true
 }
 
 export const stockReducer = (state=INIT_STATE, action) => {
@@ -24,6 +25,11 @@ export const stockReducer = (state=INIT_STATE, action) => {
                 ...state,
                 isGettingStock: false,
                 getStockErrorMsg: action.payload
+            }
+        case stockActionTypes.TOGGLE_HIDDEN:
+            return {
+                ...state,
+                burgerIsHidden: !state.burgerIsHidden
             }
         default:
             return state;

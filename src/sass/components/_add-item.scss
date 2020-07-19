@@ -41,14 +41,25 @@
 
         &--name {
             margin-left: 3rem;
+            @media only screen and (max-width: $bp-phone) {
+                margin-left: 1rem;
+            }
         }
 
         &--textarea {
             margin-left: 4.9rem;
+
+            @media only screen and (max-width: $bp-phone) {
+                margin-left: 3.4rem;
+            }
         }
 
         &--category {
             margin-left: 7.3rem;
+
+            @media only screen and (max-width: $bp-phone) {
+                margin-left: 5.4rem;
+            }
         }
 
         &--file {
@@ -60,11 +71,19 @@
         &--price {
             margin-left: 7.5rem;
             width:15rem;
+
+            @media only screen and (max-width: $bp-phone) {
+                margin-left: 6rem;
+            }
         }
 
         &--qty {
             margin-left: 6.8rem;
             width: 15rem;
+
+            @media only screen and (max-width: $bp-phone) {
+                margin-left: 5.4rem;
+            }
         }
     }
 

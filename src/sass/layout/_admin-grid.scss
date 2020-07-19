@@ -17,4 +17,12 @@
 .admin-dashboard {
     display: grid;
     grid-template-columns:20vw 78vw;
+
+    @media only screen and (max-width: $bp-biggest) {
+        grid-template-columns: 25vw 73vw;
+    }
+
+    @media only screen and (max-width: $bp-tablet-2) {
+        grid-template-columns: 100vw;
+    }
 }

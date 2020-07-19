@@ -20,6 +20,10 @@
     &__label {
         font-size: 2.5rem;
         margin-right: 3rem;
+
+        @media only screen and (max-width: $bp-small-phone) {
+            margin-right: 1.5rem;
+        }
     }
 
     &__input {
