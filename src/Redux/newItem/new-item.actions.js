@@ -68,3 +68,49 @@ export const asyncUpLoadNewProducts = (newProduct) => {
         }
     }
 }
+
+const updateProductStart = () => ({
+    type: newItemActionTypes.UPDATE_ITEM_START
+});
+
+const updateProductSuccess = () => ({
+    type: newItemActionTypes.UPDATE_ITEM_SUCCESS
+});
+
+const updateProductFailure = (error) => ({
+    type: newItemActionTypes.UPDATE_ITEM_FAILURE,
+    payload: error
+});
+
+export const asyncUpdateProduct = (newProduct, id) => {
+    return async dispatch => {
+        try {
+            dispatch(updateProductStart());
+
+            const productRef = firestore.collection('products').doc(id);
+            await productRef.update({
+                productName: newProduct.productName,
+                description: newProduct.description,
+                category: newProduct.category,
+                price: parseInt(newProduct.price),
+                quantity: parseInt(newProduct.quantity),
+                specifications: [newProduct.spec1, newProduct.spec2, newProduct.spec3, newProduct.spec4]
+            });
+            dispatch(updateProductSuccess());
+            swal({
+                title: "Done",
+                text: "Update Successful",
+                icon: "success",
+                button: "ok!",
+            });
+        } catch (error) {
+            dispatch(updateProductFailure(error));
+            swal({
+                title: "oops! An Error occurred",
+                text: "Try Again",
+                icon: "warning",
+                button: "ok",
+            }); 
+        }
+    }
+}

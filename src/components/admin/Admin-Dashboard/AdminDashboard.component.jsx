@@ -10,6 +10,8 @@ import CreateCategory from './../Create-Category/CreateCategory.component';
 import AddItem from '../Add-Item/AddItem.component';
 import ItemPage from '../Item-Page/ItemPage.component';
 import AdminSignUpPage from '../admin-signIn-page/AdminSignInPage.component';
+import SearchPage from './../Search-Page/SearchPage.component';
+
 
 
 //React Router
@@ -40,10 +42,11 @@ const AdminDashboard = ({currentUser}) => {
                             <CategoryList/>
                         </div>}}/>       
                         <Route exact path="/add" component = {AddItem}/>       
-                        <Route exact path="/edit/:id" component = {EditItem}/>       
                         <Route exact path="/Create-admin" component = {CreateAdmin}/>       
                         <Route exact path="/create-category" component = {CreateCategory}/>       
+                        <Route exact path="/edit/:id" component = {EditItem}/>       
                         <Route exact path="/product/:id" component ={ItemPage} />
+                        <Route exact path="/search/:id" component ={SearchPage} />
                     </Switch>
                 </div>
             </div>

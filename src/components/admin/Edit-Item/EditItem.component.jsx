@@ -5,6 +5,11 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { getProductsSlice } from '../../../Redux/products-page/products.selector';
 import { categories } from '../../../Redux/Category/category.selectors';
+import { asyncUpdateProduct } from '../../../Redux/newItem/new-item.actions';
+import { clearForm, isUpdating } from './../../../Redux/newItem/new-item.selectors';
+import Loader from 'react-loader-spinner';
+
+
 
 class EditItem extends React.Component {
     //init empty state
@@ -37,8 +42,22 @@ class EditItem extends React.Component {
         this.setState({ [name]: value});
     }
 
-    handleSubmit = event => {
+    handleSubmit = async event => {
         event.preventDefault();
+        const { match: { params: {id} }, updateProduct, clearInput } = this.props;
+        await updateProduct(this.state, id);
+        if (clearInput) {
+            this.setState({
+                productName: '',
+                description: '',
+                price: '',
+                quantity: '',
+                spec1: '',
+                spec2: '',
+                spec3: '',
+                spec4: ''
+            })
+        }
     }
 
     render() {
@@ -113,8 +132,21 @@ class EditItem extends React.Component {
                             <input value={spec4} onChange={this.handleChange} type="text" name="spec4" id="spec4" className="add-item__input"/>
                         </div>
                     </div>
-        
-                    <input type="submit" value="Update" className="add-item__upload"/>
+                    {
+                        this.props.updating ?
+                            <div style={{display: 'flex', alignItems: 'center'}}>
+                                <input type="submit" value="Updating" className="add-item__upload" style={{marginRight: '1.5rem'}} disabled/>
+                                <Loader
+                                    type="Oval"
+                                    color="#006400"
+                                    height={50}
+                                    width={50}
+                                    timeout={0}                
+                                />
+                            </div>
+                        :
+                            <input type="submit" value="Update" className="add-item__upload" style={{marginRight: '1.5rem'}}/>
+                    }
                 </form>
             </div>
         )
@@ -123,11 +155,16 @@ class EditItem extends React.Component {
 
 const mapStateToProps = state => ({
     products: getProductsSlice(state),
-    categoryList: categories(state)
+    categoryList: categories(state),
+    clearInput: clearForm(state),
+    updating: isUpdating(state)
 });
 
 const mapDispatchToProps = dispatch => ({
-
+    updateProduct: (newProduct, id) => dispatch(asyncUpdateProduct(newProduct, id))
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditItem));
+export default withRouter(
+    connect(mapStateToProps, mapDispatchToProps)
+    (EditItem)
+);
