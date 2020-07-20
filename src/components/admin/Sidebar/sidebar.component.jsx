@@ -17,7 +17,7 @@ class Sidebar extends React.Component{
         }
         if (!sidebarHidden && window.innerWidth < 623) {
             sidebarStyle = {
-                transform: 'translateX(7%)'
+                transform: 'translateX(1%)'
             }
         }
         return(
@@ -44,7 +44,7 @@ class Sidebar extends React.Component{
                         <IoIosCreate className="sidebar__link--icon"/>
                         <div className="sidebar__link--item">Create Admin</div>
                     </NavLink>
-                    <a href="https://github.com" target="_blank" className="sidebar__link">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="sidebar__link">
                         <AiOutlineSwitcher className="sidebar__link--icon"/>
                         <div className="sidebar__link--item">App</div>
                     </a>

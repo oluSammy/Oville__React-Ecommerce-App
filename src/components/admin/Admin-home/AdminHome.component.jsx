@@ -1,6 +1,5 @@
 import React from 'react';
 
-import AdminNav from './../Admin-Nav/Admin-Nav.component';
 import AdminDashboard from './../Admin-Dashboard/AdminDashboard.component';
 
 //Redux
@@ -22,7 +21,6 @@ class AdminHome extends React.Component {
     render(){
         return(
             <div className="admin-container">
-                {/* <AdminNav/> */}
                 <AdminDashboard/>
             </div>            
         )
