@@ -6,3 +6,8 @@ export const selectStockSlice = createSelector(
     [selectStock],
     stock => stock.stock
 );
+
+export const toggleSideBarSlice = createSelector(
+    [selectStock],
+    stock => stock.burgerIsHidden
+);

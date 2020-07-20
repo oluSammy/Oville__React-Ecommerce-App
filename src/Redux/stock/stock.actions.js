@@ -15,6 +15,10 @@ const getStockFailure = (error) => ({
     payload: error
 });
 
+export const toggleSideBar = () => ({
+    type: stockActionTypes.TOGGLE_HIDDEN
+})
+
 export const asyncGetStockCount = () => {
     return async dispatch => {
         try {

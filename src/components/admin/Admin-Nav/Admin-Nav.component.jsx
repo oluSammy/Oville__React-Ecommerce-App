@@ -6,6 +6,8 @@ import { AiOutlineBank, AiOutlineLogout, AiOutlineSwitcher } from 'react-icons/a
 //redux
 import { connect } from 'react-redux';
 import { selectUserSlice } from '../../../Redux/user/user.selectors';
+import { toggleSideBar } from '../../../Redux/stock/stock.actions';
+import { toggleSideBarSlice } from '../../../Redux/stock/stock.selector';
 
 import { Link } from 'react-router-dom';
 
@@ -14,10 +16,11 @@ import { auth } from '../../../firebase/firebase.utils';
 
 
 
+
 class AdminNav extends React.Component {
 
     render() {
-        const { currentUser } = this.props;
+        const { currentUser, sidebarHidden, SideBar } = this.props;
         return(
             <div className="admin-nav">
                 <h1 className="admin-nav__logo">Oville Gadgets</h1>
@@ -32,7 +35,8 @@ class AdminNav extends React.Component {
                     }
                     
                     <li className="admin-nav__links--item"> 
-                        <AiOutlineSwitcher className="admin-nav__links--icon"/> App
+                        <AiOutlineSwitcher className="admin-nav__links--icon"/> 
+                        <a href="https://github.com" target="_blank" style={{color: 'white', textDecoration: 'none'}}>App</a>
                     </li>
                     {
                         currentUser ? 
@@ -43,7 +47,7 @@ class AdminNav extends React.Component {
                     }
                     {
                         currentUser ? 
-                            <li className="admin-nav__btn">
+                            <li className="admin-nav__btn" onClick={SideBar}>
                                 <div className="admin-nav__hamburger"></div>
                                 <div className="admin-nav__hamburger"></div>
                                 <div className="admin-nav__hamburger"></div>
@@ -58,7 +62,12 @@ class AdminNav extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    currentUser: selectUserSlice(state)
+    currentUser: selectUserSlice(state),
+    sidebarHidden: toggleSideBarSlice(state)
+});
+
+const mapDispatchToProps = dispatch => ({
+    SideBar: () => dispatch(toggleSideBar())
 })
 
-export default connect(mapStateToProps, null)(AdminNav);
+export default connect(mapStateToProps, mapDispatchToProps)(AdminNav);
