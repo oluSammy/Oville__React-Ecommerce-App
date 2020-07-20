@@ -7,6 +7,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "firebase": "^7.15.5",
+    "gh-pages": "^3.1.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -22,7 +23,10 @@
     "reselect": "^4.0.0",
     "sweetalert": "^2.1.2"
   },
+  "homepage": "https://oluSammy.github.io/Oville__React-Ecommerce-App",
   "scripts": {
+   "predeploy": "npm run build",
+   "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

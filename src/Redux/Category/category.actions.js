@@ -39,7 +39,7 @@ export const asyncCreateCategory = (category) => {
             });
 
             //initialize the stock count of the new category to 0
-            await firestore.collection('stock_count').doc(category).set({count: 0, category: category.toLowerCase()});
+            await firestore.collection('stock_count').doc(category.toLowerCase()).set({count: 0, category: category.toLowerCase()});
 
             dispatch(categorySuccess());
             swal({

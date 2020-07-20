@@ -151,7 +151,7 @@ class AddItem extends React.Component{
                 {
                     this.props.isAddingNewProduct ? 
                         <div style={{marginTop: "2rem", display: "flex", alignItems: 'center'}}>
-                            <input style={{marginRight: '2rem'}} value="Uploading" className="add-item__upload"/>
+                            <input style={{marginRight: '2rem'}} type="submit" value="Uploading" className="add-item__upload" disabled/>
                             <Loader
                                     type="Oval"
                                     color="#006400"
