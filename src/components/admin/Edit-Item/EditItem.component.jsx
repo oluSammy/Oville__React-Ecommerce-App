@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 import { getProductsSlice } from '../../../Redux/products-page/products.selector';
 import { categories } from '../../../Redux/Category/category.selectors';
 import { asyncUpdateProduct } from '../../../Redux/newItem/new-item.actions';
-import { clearForm, isUpdating } from './../../../Redux/newItem/new-item.selectors';
+import { isUpdating } from './../../../Redux/newItem/new-item.selectors';
 import Loader from 'react-loader-spinner';
 
 
@@ -44,20 +44,9 @@ class EditItem extends React.Component {
 
     handleSubmit = async event => {
         event.preventDefault();
-        const { match: { params: {id} }, updateProduct, clearInput } = this.props;
+        const { match: { params: {id} }, updateProduct, history } = this.props;
         await updateProduct(this.state, id);
-        if (clearInput) {
-            this.setState({
-                productName: '',
-                description: '',
-                price: '',
-                quantity: '',
-                spec1: '',
-                spec2: '',
-                spec3: '',
-                spec4: ''
-            })
-        }
+        history.goBack();
     }
 
     render() {
@@ -156,7 +145,6 @@ class EditItem extends React.Component {
 const mapStateToProps = state => ({
     products: getProductsSlice(state),
     categoryList: categories(state),
-    clearInput: clearForm(state),
     updating: isUpdating(state)
 });
 

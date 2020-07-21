@@ -1,7 +1,8 @@
 import React from 'react';
 
 //icons
-import { AiOutlineBank, AiOutlineLogout, AiOutlineSwitcher } from 'react-icons/ai';
+import { AiOutlineBank, AiOutlineLogout } from 'react-icons/ai';
+// AiOutlineSwitcher
 
 //redux
 import { connect } from 'react-redux';
@@ -35,10 +36,10 @@ class AdminNav extends React.Component {
                         : ''
                     }
                     
-                    <li className="admin-nav__links--item"> 
+                    {/* <li className="admin-nav__links--item"> 
                         <AiOutlineSwitcher className="admin-nav__links--icon"/> 
                         <a href="https://github.com" target="_blank" rel="noopener noreferrer"  style={{color: 'white', textDecoration: 'none'}}>App</a>
-                    </li>
+                    </li> */}
                     {
                         currentUser ? 
                             <li className="admin-nav__links--item" onClick={() => auth.signOut()}> 
