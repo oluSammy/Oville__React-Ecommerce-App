@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5fa312b4a2c29559894bbf297ef1b598",
+    "revision": "019677ce436a55c9a6e9914d06122062",
     "url": "/Oville__React-Ecommerce-App/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Oville__React-Ecommerce-App/static/css/2.f87e9f44.chunk.css"
   },
   {
-    "revision": "18aa08ee9accfba030a3",
-    "url": "/Oville__React-Ecommerce-App/static/css/main.a2706531.chunk.css"
+    "revision": "a0e3fbbacf9963fce177",
+    "url": "/Oville__React-Ecommerce-App/static/css/main.f2ba7181.chunk.css"
   },
   {
     "revision": "332af361a146634005a9",
@@ -20,7 +20,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Oville__React-Ecommerce-App/static/js/2.5c16e51f.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "18aa08ee9accfba030a3",
+    "revision": "a0e3fbbacf9963fce177",
     "url": "/Oville__React-Ecommerce-App/static/js/main.7f01dd4a.chunk.js"
   },
   {

@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Oville__React-Ecommerce-App/precache-manifest.c698d8a0c26cd7494aee0ba1d21ea64b.js"
+  "/Oville__React-Ecommerce-App/precache-manifest.1c8a42d0039e2349064f883c1a9cca2a.js"
 );
 
 self.addEventListener('message', (event) => {
