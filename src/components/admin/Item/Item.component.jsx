@@ -48,8 +48,8 @@ const Item = ({data: { description, imgUrl, price, productName, quantity, unitsS
 const limitSentence = (sentence) => {
     const words = sentence.split(" ");
 
-    if(words.length > 20 )
-        return `${words.join(" ")}...`;
+    if(words.length > 16 )
+        return `${words.slice(0, 15).join(" ")}...`;
     return sentence;
 }
 

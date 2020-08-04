@@ -86,7 +86,7 @@ class AddItem extends React.Component{
                 <div className="add-item__form--group add-item__category">
                     <label htmlFor="category" className="add-item__label">Category:</label>
                     <select value={category} onChange={this.handleChange}
-                        id="category" name="category" className="add-item__input add-item__input--category">
+                        id="category" name="category" className="add-item__input add-item__input--category" required >
                         <option >Select Category</option>
                         {
                             this.state.categoryList ? 
