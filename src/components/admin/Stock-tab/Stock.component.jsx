@@ -7,11 +7,6 @@ import { Link } from 'react-router-dom';
 
 class Stock extends React.Component {
     
-    //get stock count
-    async componentDidMount(){
-         await this.props.getStockCount();
-    }
-
     render(){
         return (
             <div className="stock">
