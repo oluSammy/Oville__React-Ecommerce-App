@@ -41,7 +41,6 @@ class AddItem extends React.Component{
     handleSubmit = async event => {
         // dispatch upload new products from redux and reset form to init state
         event.preventDefault();
-        console.log(this.state)
         this.props.uploadNewProducts(this.state);
         this.setState({
             ...this.state,

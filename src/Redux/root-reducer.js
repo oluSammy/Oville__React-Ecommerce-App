@@ -15,7 +15,7 @@ import productsReducer from './products-page/products.reducer';
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['category', 'newItem', 'stock', 'products'] 
+    whitelist: ['category', 'newItem', 'stock'] 
 }
 
 const rootReducer = combineReducers({

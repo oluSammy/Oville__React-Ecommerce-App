@@ -67,7 +67,6 @@ export const asyncGetCategory = () => {
             });
             dispatch(getCategorySuccess(categoryNames));
         } catch (error) {
-            console.log(error);
             dispatch(getCategoryFailure(error));
         }
     }

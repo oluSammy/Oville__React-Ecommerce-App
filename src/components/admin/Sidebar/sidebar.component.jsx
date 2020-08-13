@@ -40,10 +40,6 @@ class Sidebar extends React.Component{
                         <AiOutlinePlusCircle className="sidebar__link--icon"/>
                         <div className="sidebar__link--item">New Category</div>
                     </NavLink>
-                    <NavLink to="/Create-admin" className="sidebar__link"activeClassName="sidebar-active">
-                        <IoIosCreate className="sidebar__link--icon"/>
-                        <div className="sidebar__link--item">Create Admin</div>
-                    </NavLink>
                     <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="sidebar__link">
                         <AiOutlineSwitcher className="sidebar__link--icon"/>
                         <div className="sidebar__link--item">App</div>
