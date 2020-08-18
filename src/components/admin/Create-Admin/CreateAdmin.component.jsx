@@ -1,6 +1,5 @@
 import React from 'react';
 import { IoIosCreate } from "react-icons/io";
-import { firestore } from '../../../firebase/firebase.utils';
 
 
 class CreateAdmin extends React.Component {

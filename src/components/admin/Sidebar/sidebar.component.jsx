@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { AiOutlineDashboard, AiOutlineSwitcher, AiOutlineAppstoreAdd, AiOutlinePlusCircle } from 'react-icons/ai';
-import { RiUserFollowLine } from 'react-icons/ri'
-import { IoIosCreate } from 'react-icons/io';
+import { RiUserFollowLine } from 'react-icons/ri';
+// import { IoIosCreate } from 'react-icons/io';
 
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -28,7 +28,7 @@ class Sidebar extends React.Component{
                     <p className="sidebar__account--admin">Admin</p>
                 </div>
                 <ul className="sidebar__links">
-                    <NavLink to="/" className="sidebar__link" >
+                    <NavLink to="/Oville__React-Ecommerce-App" className="sidebar__link" >
                         <AiOutlineDashboard className="sidebar__link--icon"/>
                         <div className="sidebar__link--item">Dashboard</div>
                     </NavLink>
@@ -40,7 +40,7 @@ class Sidebar extends React.Component{
                         <AiOutlinePlusCircle className="sidebar__link--icon"/>
                         <div className="sidebar__link--item">New Category</div>
                     </NavLink>
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="sidebar__link">
+                    <a href="https://e-commerce-oville.web.app" target="_blank" rel="noopener noreferrer" className="sidebar__link">
                         <AiOutlineSwitcher className="sidebar__link--icon"/>
                         <div className="sidebar__link--item">App</div>
                     </a>
